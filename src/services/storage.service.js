@@ -1,0 +1,20 @@
+import ImageKit from "@imagekit/nodejs";
+import dotenv from "../../dotenv.js";
+const imageKit = new ImageKit({
+    privateKey : process.env.IMAGEKIT_PRIVATE_KEY
+    
+})
+
+
+
+async function uploadFile(buffer) {
+    const result = await imageKit.files.upload({
+        file : buffer.toString("base64"),
+        fileName : "image.jpg"
+    })
+
+
+    return result;
+}
+
+export default uploadFile;
